@@ -88,9 +88,19 @@ def show_account(request, id):
     account = Account.objects.filter(id=id).first()
     if not account or account.user.id != request.user.id:
         return redirect(reverse('show_accounts'))
+    records = Record.objects.filter(account=account)
+    income = 0
+    outcome = 0
+    for record in records:
+        if record.amount >= 0:
+            income += record.amount
+        else:
+            outcome += record.amount
 
     context = {
-        'data': account
+        'data': account,
+        'income': income,
+        'outcome': outcome
     }
     return render(request, 'show_account.html', context=context)
 

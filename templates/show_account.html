@@ -12,14 +12,18 @@
       </dd>
     <dt class="col-sm-3">IBAN:</dt>
       <dd class="col-sm-9">{{data.iban}}</dd>
+    <dt class="col-sm-3">Total Income:</dt>
+      <dd class="col-sm-9 text-success">{{income}}Eur</dd>
+    <dt class="col-sm-3">Total Outcome:</dt>
+      <dd class="col-sm-9 text-danger">{{outcome}}Eur</dd>
     <dt class="col-sm-3">Balance:</dt>
       <dd class="col-sm-9">{{data.balance}}Eur</dd>
-
+</dl>
 <div class="d-flex flex-column w-25 gap-1" >
         <a class="btn btn-outline-dark btn-lg" href="{% url 'add_record' data.id %}" role="button">Add Record</a>
         <a class="btn btn-outline-dark btn-sm " href="{% url 'show_records_history' data.id %}" role="button">Record History</a>
         <a class="btn btn-outline-secondary btn-sm" href="{% url 'show_accounts' %}" role="button">Go Back</a>
     </div>
-    </dl>
+
     </main>
 {% endblock %}
