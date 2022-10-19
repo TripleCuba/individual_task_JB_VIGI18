@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<main style="
+    width:70%;
+    margin: 2rem auto;
+    text-align : center;"
+>
+    {% if user.is_authenticated %}
+        <h1>Welcome {{user.username}}!</h1>
+        <p>At the moment your total balance is {{user.total_balance}}Eur</p>
+        <p>To manage Your accounts select <a class="link-secondary text-decoration-none" href="{% url 'show_accounts' %}">Show Accounts!</a></p>
+        <p>If You don't have any <a class="link-secondary text-decoration-none" href="{% url 'add_account' %}">Add Account</a>!</p>
+
+    {% else %}
+        <h1>Welcome Stranger! </h1>
+
+        <p>This is budget calculation app which helps you to keep track of Your financial operations</p>
+        <p>You have to <a href="{% url 'login' %}" class="text-decoration-none">log in</a> to continue</p>
+        <p>If You don't have an account yet, You can always create a new one <a class="text-decoration-none" href="{% url 'sign_up' %}">Here</a>! </p>
+    {% endif %}
+</main>
+{% endblock %}

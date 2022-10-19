@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="w-75 m-auto mt-5 text-center">
+{% if data %}
+
+<h1>Record history</h1>
+<table class="table table-striped table-hover text-start">
+  <thead>
+    <tr>
+      <th>Record Date</th>
+      <th>Income/Outcome</th>
+      <th>Record Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in data %}
+      <tr >
+        <td>{{record.date}}</td>
+        {% if record.amount > 0 %}
+        <td class="text-success">+{{record.amount}}Eur</td>
+        {% else %}
+        <td class="text-danger">{{record.amount}}Eur</td>
+        {% endif %}
+        <td>{{record.description}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+ <ul class="pagination justify-content-center">
+     {% if data.has_previous%}
+    <li class="page-item"><a class="page-link link-secondary" href="?page=1">&laquo; First</a></li>
+    <li class="page-item"><a class="page-link link-secondary" href="?page={{ data.previous_page_number}}">Previous</a></li>
+     {% endif %}
+      {% if data.has_next %}
+    <li class="page-item"><a class="page-link link-secondary" href="?page={{ data.next_page_number }}">Next</a></li>
+    <li class="page-item"><a class="page-link link-secondary" href="?page={{ data.paginator.num_pages }}">Last &raquo;</a></li>
+    {% endif %}
+  </ul>
+    <p>Page {{ data.number }} of {{ data.paginator.num_pages }}</p>
+  {% else %}
+    <h1>There is no record history to show</h1>
+    <p>You did not create any record for this account</p>
+    <p>To create new record press add record!</p>
+{% endif %}
+  <div class="d-flex flex-column gap-1 w-25 m-auto">
+        <a class="btn btn-outline-dark btn-lg" href="{% url 'add_record' page_id %}" role="button">Add record</a>
+        <a class="btn btn-outline-secondary btn-lg" href="{% url 'show_account' page_id %}" role="button">Go Back</a>
+    </div>
+
+  </main>
+
+{% endblock %}

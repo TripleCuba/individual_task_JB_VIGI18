@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% block content %}
+<main class="d-flex flex-column mx-auto w-50 mt-3">
+<h1>Sign up!</h1>
+
+<form method="post" action="/sign_up" class="d-flex flex-column mt-4 py-2 ">
+    {% csrf_token %}
+
+        {% if form.username.errors %}
+        <div class="text-light bg-danger ">{{ form.username.errors }}</div>
+        {% endif %}
+    {{form.username.label}}
+    {{form.username}}
+        {% if form.email.errors %}
+        <div class="text-light bg-danger">{{ form.email.errors }}</div>
+        {% endif %}
+    {{form.email.label}}
+    {{form.email}}
+        {% if form.password1.errors %}
+        <div class="text-light bg-danger">{{ form.password1.errors }}</div>
+        {% endif %}
+    {{form.password1.label}}
+    {{form.password1}}
+        {% if form.password2.errors %}
+        <div class="text-light bg-danger">{{ form.password2.errors }}</div>
+        {% endif %}
+    {{form.password2.label}}
+    {{form.password2}}
+    <input class="btn btn-outline-dark mt-1" type="submit" value="submit">
+</form>
+    <p class>Already have an account? <a href="{% url 'login' %}" class="link-secondary text-decoration-none">Log in</a>!</p>
+    </main>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="mt-5 w-75 mx-auto">
+    <h1>Account</h1>
+<dl class="row py-2">
+    <dt class="col-sm-3">Owner username:</dt>
+      <dd class="col-sm-9">{{user.username}}</dd>
+    <dt class="col-sm-3">Bank Information:</dt>
+      <dd class="col-sm-9">
+        <p>Bank Title: {{data.bank.title}}</p>
+        <p>Bank Code: {{data.bank.code}}</p>
+      </dd>
+    <dt class="col-sm-3">IBAN:</dt>
+      <dd class="col-sm-9">{{data.iban}}</dd>
+    <dt class="col-sm-3">Balance:</dt>
+      <dd class="col-sm-9">{{data.balance}}Eur</dd>
+
+<div class="d-flex flex-column w-25 gap-1" >
+        <a class="btn btn-outline-dark btn-lg" href="{% url 'add_record' data.id %}" role="button">Add Record</a>
+        <a class="btn btn-outline-dark btn-sm " href="{% url 'show_records_history' data.id %}" role="button">Record History</a>
+        <a class="btn btn-outline-secondary btn-sm" href="{% url 'show_accounts' %}" role="button">Go Back</a>
+    </div>
+    </dl>
+    </main>
+{% endblock %}

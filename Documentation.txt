@@ -1,0 +1,15 @@
+Justas Brazaitis VIGI-18
+Budget calculator project
+
+Main idea
+- To create bank accounts with random generated IBANs using bank code
+- To create records in selected bank accounts and keep track on record history in each account
+
+Getting Started
+This app is created using Python language, Django framework
+- Install requirements from requirements.txt file in your Python code editor
+- Run comand in your terminal "python manage.py runserver"
+To login to admin:
+ username:admin
+ password:admin
+

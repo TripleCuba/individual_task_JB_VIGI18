@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main class="w-50 m-auto mt-3">
+        <h1>Log In!</h1>
+<form class="d-flex flex-column mt-4 py-2" method="post">
+    {% csrf_token %}
+        {% if form.errors%}
+        <div class="text-light bg-danger">Password and username does not match or User does not exist!</div>
+        {% endif %}
+    {{form.username.label}}
+    {{form.username}}
+    {{form.password.label}}
+    {{form.password}}
+
+    <input class="btn btn-outline-dark mt-1" type="submit" value="Log In">
+</form>
+        <p>Forgot your password? <a href="{% url 'password_reset' %}" class="link-secondary text-decoration-none ">Reset Your password Here</a>!</p>
+        <p>Don't have an account? <a class="link-secondary text-decoration-none" href="{% url 'sign_up' %}">Sign Up</a>!</p>
+
+    </main>
+{% endblock %}

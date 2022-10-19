@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="m-auto mt-3 w-75 mx-auto">
+    <h1>Add Account!</h1>
+<form method="post">
+     <p>Please select your bank, and we will automatically generate your IBAN for you! </p>
+     {% csrf_token %}
+     <label class="form-label">{{form.bank.label}}</label>
+     {{form.bank}}
+     <input type="submit" class="btn my-1 btn-outline-dark w-100" value="Add Account!">
+ </form>
+    <a class="btn btn-outline-secondary w-100" href="{% url 'index' %}">Go Back</a>
+</main>
+{% endblock %}

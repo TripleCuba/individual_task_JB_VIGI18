@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="m-auto mt-3 w-75 mx-auto">
+    <h1>Add Record!</h1>
+<form method="post">
+    {% csrf_token %}
+    <label class="form-label">{{form.amount.label}}</label>
+    {{form.amount}}
+    <label class="form-label">{{form.description.label}}</label>
+    {{form.description}}
+    <input type="submit" class="btn my-1 btn-outline-dark w-25" value="Add Record!">
+</form>
+    <a class="btn btn-outline-secondary w-25" href="{% url 'show_account' page_id %}">Go Back</a>
+</main>
+{% endblock %}

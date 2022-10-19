@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if data %}
+
+<main class="m-auto mt-5 w-75">
+    <h1>Accounts</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Account IBAN</th>
+            <th>Account Bank</th>
+            <th>Account Balance</th>
+            <th>Account Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for account in data %}
+        <tr>
+            <td>{{account.iban}}</td>
+            <td>{{account.bank.title}}</td>
+            <td>{{account.balance}} Eur</td>
+            <td class="bg-dark  text-center"><a class="text-decoration-none link-light"
+                                                     href="{% url 'show_account' account.id %}">Detailed information</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="text-center">
+        <h1>No accounts to show!</h1>
+        <p>You did not create any account yet</p>
+        <p>To add a account <a class="text-decoration-none link-secondary" href="{% url 'add_account'%}">Click here!</a></p>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}
